@@ -10,6 +10,7 @@ import {
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-taskdetails',
@@ -22,6 +23,8 @@ export class TaskdetailsComponent implements OnInit {
   taskDetails?: Task;
   id!: string;
   taskForm!: FormGroup;
+  _unsubscribe$: Subject<boolean> = new Subject();
+
   constructor(
     private taskSer: TaskService,
     private activatedRoute: ActivatedRoute,
@@ -45,21 +48,28 @@ export class TaskdetailsComponent implements OnInit {
   }
   onSubmit() {
     let close = document.getElementById('close-modal') as HTMLButtonElement;
-    this.taskSer.updateTask(this.id, this.taskForm.value).subscribe(
-      (res) => {
-        // this.router.navigate(['/employee', this.taskDetails?._id]);
-        this.ngOnInit();
-        close.click();
-      },
-      (err) => {
-        console.error(err);
-      }
-    );
+    this.taskSer
+      .updateTask(this.id, this.taskForm.value)
+      .pipe(takeUntil(this._unsubscribe$))
+      .subscribe(
+        (res) => {
+          // this.router.navigate(['/employee', this.taskDetails?._id]);
+          this.ngOnInit();
+          close.click();
+        },
+        (err) => {
+          console.error(err);
+        }
+      );
   }
   close() {
     this.taskForm.patchValue({
       name: this.taskDetails?.name,
       completed: this.taskDetails?.completed,
     });
+  }
+  ngOnDestroy(): void {
+    this._unsubscribe$.next(true);
+    this._unsubscribe$.complete();
   }
 }

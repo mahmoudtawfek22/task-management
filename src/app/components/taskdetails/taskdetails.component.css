@@ -102,9 +102,7 @@
 
   }
 
-  .box {
-    padding: 0 5px;
-  }
+
 
   .AccSideBar .user-data p {
     font-size: 20px;
@@ -114,14 +112,10 @@
 
 
   .account-container {
-    width: 70%;
+    width: 90%;
   }
 
-  .editbtn {
-    position: relative;
-    left: 80%;
-    top: -5px;
-  }
+
 
 
 }
@@ -141,17 +135,7 @@
   }
 
 
-  .AccSideBar .user-data .avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-bottom: 12px;
-  }
 
-  .AccSideBar .user-data .label {
-    color: rgb(131, 122, 122);
-    font-size: 20px;
-    font-weight: 500;
-    padding-bottom: 0;
-  }
+
+
 }

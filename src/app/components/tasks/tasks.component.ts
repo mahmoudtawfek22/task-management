@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Task } from '../../interfaces/task';
 import { TaskService } from '../../services/task.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-tasks',
@@ -23,6 +24,8 @@ export class TasksComponent implements OnInit {
   tasks!: Task[];
   lastTasks!: Task[];
   searchValue!: string;
+  _unsubscribe$: Subject<boolean> = new Subject();
+
   p: number = 1;
   total: number = 0;
   constructor(private taskSer: TaskService) {}
@@ -30,17 +33,20 @@ export class TasksComponent implements OnInit {
     this.getAllTasks();
   }
   getAllTasks() {
-    this.taskSer.getAllTasks().subscribe(
-      (res) => {
-        console.log(res);
-        this.tasks = res;
-        this.lastTasks = [...this.tasks];
-        this.total = this.lastTasks.length;
-      },
-      (err) => {
-        console.error(err);
-      }
-    );
+    this.taskSer
+      .getAllTasks()
+      .pipe(takeUntil(this._unsubscribe$))
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.tasks = res;
+          this.lastTasks = [...this.tasks];
+          this.total = this.lastTasks.length;
+        },
+        error: (err) => {
+          console.error(err);
+        },
+      });
   }
   update(event: any, id: string) {
     this.taskSer
@@ -59,5 +65,9 @@ export class TasksComponent implements OnInit {
     if (this.searchValue.length == 0) {
       this.tasks = this.lastTasks;
     }
+  }
+  ngOnDestroy(): void {
+    this._unsubscribe$.next(true);
+    this._unsubscribe$.complete();
   }
 }
