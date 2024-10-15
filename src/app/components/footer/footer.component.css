@@ -1,0 +1,21 @@
+footer {
+  background-color: white;
+  color: gray;
+}
+
+footer h6, div span {
+  color: gray;
+}
+
+footer p {
+  color: gray;
+}
+
+footer p a {
+  color: gray;
+
+}
+
+footer i {
+  color: rgb(66, 99, 234);
+}

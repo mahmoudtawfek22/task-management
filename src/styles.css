@@ -1,0 +1,19 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+#root {
+  min-height: 90vh;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  background: rgb(151, 160, 251);
+  background: radial-gradient(circle, rgb(47, 51, 84) 10%, rgb(58, 71, 126) 51%, rgb(75, 95, 230) 94%);
+}
+
+html {
+  scroll-behavior: smooth;
+}

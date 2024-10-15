@@ -1,0 +1,157 @@
+* {
+  box-sizing: border-box;
+
+}
+
+#root {
+  margin-top: 0;
+  padding-top: 0;
+  height: calc(100vh - 50px);
+  display: flex;
+  align-items: center;
+
+}
+
+
+
+
+
+.account-container {
+  /* background-color: var(--maincolor); */
+  background-color: white;
+
+  margin: 0 auto;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  margin-top: 10px;
+  padding-top: 10px;
+  width: 60%;
+
+  color: gray;
+  box-shadow: 0 7px 28px rgba(179, 165, 165, 0.355),
+    0 10px 10px rgba(62, 70, 70, 0.2);
+  border-radius: 4px;
+
+
+}
+
+
+
+
+
+
+.AccSideBar {
+  height: fit-content;
+
+}
+
+.account-container .btn {
+
+  background-color: black;
+  border: none;
+  display: inline;
+}
+
+
+
+.userimage {
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+
+.AccSideBar .user-data p {
+  color: gray;
+  font-size: 18px;
+  font-weight: 500;
+  overflow-wrap: break-word;
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+.AccSideBar .user-data .label {
+  color: rgb(66, 99, 234);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+
+
+.box {
+  padding: 0px 30px;
+}
+
+
+
+.AccSideBar .user-data {
+  padding: 18px 15px 22px;
+}
+
+@media(max-width:768px) {
+  /* .AccSideBar div.user-data .box */
+
+  .AccSideBar div.user-data {
+
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    padding: 0 10px;
+
+
+  }
+
+  .box {
+    padding: 0 5px;
+  }
+
+  .AccSideBar .user-data p {
+    font-size: 20px;
+
+  }
+
+
+
+  .account-container {
+    width: 70%;
+  }
+
+  .editbtn {
+    position: relative;
+    left: 80%;
+    top: -5px;
+  }
+
+
+}
+
+@media(max-width:540px) {
+  .AccSideBar div.user-data {
+
+    flex-direction: column;
+    align-items: flex-start;
+
+
+  }
+
+  .AccSideBar div.user-data .box {
+    margin: 0 auto;
+
+  }
+
+
+  .AccSideBar .user-data .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 12px;
+  }
+
+  .AccSideBar .user-data .label {
+    color: rgb(131, 122, 122);
+    font-size: 20px;
+    font-weight: 500;
+    padding-bottom: 0;
+  }
+}

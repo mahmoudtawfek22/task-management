@@ -1,0 +1,18 @@
+<header>
+  <div class="container">
+    <h1>TMMS</h1>
+    <nav>
+      <i class="fas fa-bars toggle-menu" (click)="change()"></i>
+      <ul id="navul">
+        <li>
+          <a
+            routerLink="/tasks"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Tasks</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,29 @@
+<div id="root">
+  <div class="account-container mt-0">
+    <div class="AccSideBar position-relative">
+      <div class="userimage">
+        <h1>Task</h1>
+      </div>
+      <div class="user-data">
+        <div class="box d-flex justify-content-around flex-wrap mx-auto">
+          <div class="d-flex align-items-center">
+            <p class="label">Name:</p>
+            <p class="mx-2">{{ taskDetails?.name }}</p>
+          </div>
+          <div class="d-flex align-items-center">
+            <p class="label">Completed:</p>
+            <p
+              class="mx-2"
+              [ngClass]="{
+                'text-danger': !taskDetails?.completed,
+                'text-success': taskDetails?.completed
+              }"
+            >
+              {{ taskDetails?.completed ? "Completed" : "Not completed" }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
